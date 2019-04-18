@@ -1,0 +1,222 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+  ext.buildConfig = [
+      'compileSdk': 28,
+      'minSdk': 21,
+      'targetSdk': 28,
+
+      'version': [
+          'major': 0,
+          'minor': 0,
+          'patch': 1,
+          'build': 0,
+      ],
+  ]
+  ext.buildConfig.version['name'] =
+      "${buildConfig.version.major}.${buildConfig.version.minor}.${buildConfig.version.patch}"
+  ext.buildConfig.version['fullName'] = "${buildConfig.version.name}.${buildConfig.version.build}"
+  ext.buildConfig.version['code'] = buildConfig.version.major * 1000000 +
+      buildConfig.version.minor *
+      10000 +
+      buildConfig.version.patch *
+      100 +
+      buildConfig.version.build
+
+  ext.versions = [
+      'kotlin': '1.3.21',
+      'kotlinSerialization': '0.6.2',
+      'okhttp': '3.11.0',
+      'retrofit': '2.4.0',
+      'dagger': '2.22.1',
+      'sqldelight': '1.0.3',
+      'rxjava': '2.2.0',
+      'rxbindings': "3.0.0-alpha2",
+      'spek': '1.1.5',
+      'leakcanary': '1.6.2',
+      'assistedInject': '0.3.0',
+      'autodispose': '1.0.0',
+      'anko': '0.10.8'
+  ]
+
+  ext.deps = [
+      'kotlin': [
+          'stdlib': "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+          'test': "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}",
+          'serialization': "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${versions.kotlinSerialization}",
+      ],
+      'androidx': [
+          'annotations': 'androidx.annotation:annotation:1.0.0',
+          'appCompat': 'androidx.appcompat:appcompat:1.0.0',
+          'constraintLayout': 'androidx.constraintlayout:constraintlayout:1.1.3',
+          'core': 'androidx.core:core-ktx:1.0.0',
+          'recyclerView': 'androidx.recyclerview:recyclerview:1.0.0',
+          'sqliteFramework': 'androidx.sqlite:sqlite-framework:1.0.0',
+          'preference' : 'androidx.preference:preference:1.0.0',
+          'test': [
+              'runner': 'androidx.test:runner:1.1.0',
+              'rules': 'androidx.test:rules:1.1.0',
+          ]
+      ],
+      'material': 'com.google.android.material:material:1.0.0',
+      'okhttp': [
+          'client': "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+          'logging': "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+          'mockWebServer': "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
+      ],
+      'retrofit': [
+          'client': "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+          'adapterRxJava2': "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
+          'converterKotlinxSerialization': 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.0.1',
+          'mock': "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
+      ],
+      'dagger': [
+          'runtime': "com.google.dagger:dagger:${versions.dagger}",
+          'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
+          'androidRuntime': "com.google.dagger:dagger-android:${versions.dagger}",
+          'androidCompiler': "com.google.dagger:dagger-android-processor:${versions.dagger}",
+          'assistedInject': [
+              'runtime': "com.squareup.inject:assisted-inject-annotations-dagger2:${versions.assistedInject}",
+              'compiler': "com.squareup.inject:assisted-inject-processor-dagger2:${versions.assistedInject}"
+          ]
+      ],
+      'threetenabp': 'com.jakewharton.threetenabp:threetenabp:1.1.0',
+      'okio': 'com.squareup.okio:okio:2.0.0',
+      'timber': [
+          'android': 'com.jakewharton.timber:timber-android:5.0.0-SNAPSHOT'
+      ],
+      'junit': [
+          'junit': 'junit:junit:4.12',
+          'platformRunner': 'org.junit.platform:junit-platform-runner:1.0.0'
+      ],
+      'spek': [
+          'api': "org.jetbrains.spek:spek-api:${versions.spek}",
+          'junitPlatformEngine': "org.jetbrains.spek:spek-junit-platform-engine:${versions.spek}"
+      ],
+      'truth': 'com.google.truth:truth:0.42',
+      'byteunits': 'com.jakewharton.byteunits:byteunits:0.9.1',
+      'sqldelight': [
+          'android': "com.squareup.sqldelight:android-driver:${versions.sqldelight}",
+          'runtime': [
+              'common': "com.squareup.sqldelight:runtime-metadata:${versions.sqldelight}",
+              'jdk': "com.squareup.sqldelight:runtime-jvm:${versions.sqldelight}",
+          ],
+          'extensions': [
+              "rxjava": "com.squareup.sqldelight:rxjava2-extensions:${versions.sqldelight}"
+          ]
+      ],
+      'rx': [
+          'android': "io.reactivex.rxjava2:rxandroid:2.1.0",
+          'java': "io.reactivex.rxjava2:rxjava:${versions.rxjava}",
+          'kotlin':  "io.reactivex.rxjava2:rxkotlin:2.3.0",
+          'binding': [
+              'platform': "com.jakewharton.rxbinding3:rxbinding:${versions.rxbindings}",
+              'core': "com.jakewharton.rxbinding3:rxbinding-core:${versions.rxbindings}",
+              'appcompat': "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxbindings}",
+              'drawerlayout': "com.jakewharton.rxbinding3:rxbinding-drawerlayout:${versions.rxbindings}",
+              'leanBack': "com.jakewharton.rxbinding3:rxbinding-leanback:${versions.rxbindings}",
+              'recyclerview': "com.jakewharton.rxbinding3:rxbinding-recyclerview:${versions.rxbindings}",
+              'slidingpanelayout': "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:${versions.rxbindings}",
+              'swiperefreshlayout': "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:${versions.rxbindings}",
+              'viewpager': "com.jakewharton.rxbinding3:rxbinding-viewpager:${versions.rxbindings}",
+              'material': "com.jakewharton.rxbinding3:rxbinding-material:${versions.rxbindings}"
+          ],
+          'relay': 'com.jakewharton.rxrelay2:rxrelay:2.1.0',
+          'replayingShare': 'com.jakewharton.rx2:replaying-share:2.0.1',
+          'schedulerRule': 'com.github.Plastix.RxSchedulerRule:rx2:1.0.2',
+          'lifecycle': [
+              'autodispose' : "com.uber.autodispose:autodispose:${versions.autodispose}",
+              'autodisposeAndroid' :"com.uber.autodispose:autodispose-android:${versions.autodispose}",
+              'autodisposeAndroidArchComponents' :"com.uber.autodispose:autodispose-android-archcomponents:${versions.autodispose}",
+              'autodisposeKtx' :"com.uber.autodispose:autodispose-ktx:${versions.autodispose}",
+              'autodisposeAndroidKtx' :"com.uber.autodispose:autodispose-android-ktx:${versions.autodispose}",
+              'autodisposeAndroidArchComponentsKtx' :"com.uber.autodispose:autodispose-android-archcomponents-ktx:${versions.autodispose}"
+          ]
+      ],
+      'picasso': 'com.squareup.picasso3:picasso:3.0.0-SNAPSHOT',
+      'leakcanary': [
+          'android': "com.squareup.leakcanary:leakcanary-android:1.6.1",
+          'noOp': "com.squareup.leakcanary:leakcanary-android-no-op:1.6.1"
+
+      ],
+      'anko':
+      [
+          'common': "org.jetbrains.anko:anko-commons:${versions.anko}"
+      ]
+  ]
+
+  ext.isCiBuild = System.getenv('CI') == 'true'
+
+  repositories {
+    mavenCentral()
+    google()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    gradlePluginPortal()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.4.0-rc03'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+    classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:${versions.kotlinSerialization}"
+    classpath 'org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.37'
+    classpath "com.squareup.sqldelight:gradle-plugin:${versions.sqldelight}"
+    classpath 'gradle.plugin.org.jlleitschuh.gradle:ktlint-gradle:5.0.0'
+  }
+}
+
+
+allprojects {
+  apply plugin: 'org.jlleitschuh.gradle.ktlint'
+
+  repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    maven { url "https://kotlin.bintray.com/kotlinx" }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    jcenter()
+    maven { url "https://jitpack.io" }
+  }
+
+
+  tasks.withType(Test) {
+    testLogging {
+      events "skipped", "failed", "passed"
+    }
+  }
+}
+
+def gitSha() {
+  def f = new File(buildDir, "commit-sha.txt")
+  if (!f.exists()) {
+    def p = 'git rev-parse HEAD'.execute([], project.rootDir)
+    if (p.waitFor() != 0) {
+      throw new RuntimeException(p.errorStream.text)
+    }
+    f.parentFile.mkdirs()
+    f.text = p.text.trim()
+  }
+  return f.text.trim()
+}
+
+def gitTimestamp() {
+  def f = new File(buildDir, "commit-timestamp.txt")
+  if (!f.exists()) {
+    def p = 'git log -n 1 --format=%at'.execute([], rootDir)
+    if (p.waitFor() != 0) {
+      throw new RuntimeException(p.errorStream.text)
+    }
+    f.parentFile.mkdirs()
+    f.text = p.text.trim()
+  }
+  return f.text.trim()
+}
+
+def propOrEmpty(String name) {
+  return hasProperty(name) ? getProperty(name) : ''
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}

@@ -1,0 +1,155 @@
+apply plugin: 'com.android.application'
+apply plugin: "com.squareup.sqldelight"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: 'password.gradle'
+
+android {
+  compileSdkVersion buildConfig.compileSdk
+  defaultConfig {
+    applicationId "de.number42.template"
+    minSdkVersion buildConfig.minSdk
+    targetSdkVersion buildConfig.targetSdk
+
+    versionCode buildConfig.version.code
+    versionName buildConfig.version.name
+
+    buildConfigField 'String', 'COMMIT_SHA', "\"${gitSha()}\""
+    buildConfigField 'long', 'COMMIT_UNIX_TIMESTAMP', gitTimestamp().toString() + "L"
+
+    vectorDrawables.useSupportLibrary = true
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+
+  signingConfigs {
+    debug {
+      storeFile file('debug.keystore')
+      storePassword 'android'
+      keyAlias 'androiddebugkey'
+      keyPassword 'android'
+    }
+    release {
+      storeFile file('release.keystore')
+      storePassword getPassword()
+      keyAlias 'TODO'
+      keyPassword getPassword()
+    }
+  }
+
+
+  buildTypes {
+    debug {
+      applicationIdSuffix '.debug'
+      signingConfig signingConfigs.debug
+    }
+    release {
+      minifyEnabled true
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), '../proguard-rules.pro', 'proguard-rules-project.pro'
+    }
+  }
+
+  packagingOptions {
+    exclude 'kotlin/**'
+    exclude '**/*.kotlin_metadata'
+    exclude 'META-INF/*.kotlin_module'
+    exclude 'META-INF/*.version'
+  }
+}
+
+dependencies {
+  implementation deps.androidx.sqliteFramework
+  implementation deps.kotlin.stdlib
+  implementation deps.androidx.appCompat
+  implementation deps.androidx.constraintLayout
+  implementation deps.androidx.core
+  implementation deps.androidx.recyclerView
+  implementation deps.androidx.preference
+  implementation deps.material
+
+  // Utils
+  implementation deps.anko.common
+  implementation deps.timber.android
+  implementation deps.okhttp.logging
+  implementation deps.picasso
+//  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//  implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+//  implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+  debugImplementation deps.leakcanary.android
+  releaseImplementation deps.leakcanary.noOp
+
+  // DI
+  implementation deps.dagger.runtime
+  implementation deps.dagger.androidRuntime
+  kapt deps.dagger.compiler
+  kapt deps.dagger.androidCompiler
+  implementation deps.dagger.assistedInject.runtime
+  kapt deps.dagger.assistedInject.compiler
+
+
+  // Data
+  implementation deps.androidx.sqliteFramework
+  implementation deps.sqldelight.android
+  implementation deps.sqldelight.runtime.common
+  implementation deps.sqldelight.runtime.jdk
+  implementation deps.sqldelight.extensions.rxjava
+  implementation deps.threetenabp
+
+
+  // UI
+
+
+  // Debug
+  debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+  releaseImplementation 'com.github.mypplication:stetho-noop:1.1'
+
+
+  // Rx
+  implementation deps.rx.java
+  implementation deps.rx.android
+  implementation deps.rx.binding.platform
+  implementation deps.rx.binding.core
+  implementation deps.rx.binding.appcompat
+  implementation deps.rx.binding.drawerlayout
+  implementation deps.rx.binding.leanBack
+  implementation deps.rx.binding.recyclerview
+  implementation deps.rx.binding.slidingpanelayout
+  implementation deps.rx.binding.swiperefreshlayout
+  implementation deps.rx.binding.viewpager
+  implementation deps.rx.binding.material
+  implementation deps.rx.relay
+  implementation deps.rx.replayingShare
+  implementation deps.rx.lifecycle.autodispose
+  implementation deps.rx.lifecycle.autodisposeAndroid
+  implementation deps.rx.lifecycle.autodisposeAndroidArchComponents
+  implementation deps.rx.lifecycle.autodisposeKtx
+  implementation deps.rx.lifecycle.autodisposeAndroidKtx
+  implementation deps.rx.lifecycle.autodisposeAndroidArchComponentsKtx
+  implementation deps.rx.kotlin
+
+
+  // Off device testing
+  testImplementation deps.junit.junit
+  testImplementation deps.junit.platformRunner
+  testImplementation deps.spek.api
+  testImplementation deps.spek.junitPlatformEngine
+  testImplementation deps.truth
+  testImplementation deps.rx.schedulerRule
+}
+
+kapt { arguments { arg("resourcePackageName", android.defaultConfig.applicationId) } }
+
+sqldelight {
+  sourceSet = files("src/main/sqldelight")
+}
+
+androidExtensions {
+  experimental = true
+}
