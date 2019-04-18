@@ -55,13 +55,13 @@ end
 
 # Gather information
 folder_name = (prompt "Folder name for checkout? ").strip
-app_name = (prompt "Name for the new App (replaces Template)? ").strip
+app_name = (prompt "Name for the new App (replaces krebeki-app-android)? ").strip
 package_name = (prompt "New (full!) package name (replaces de.number42.template)? ").strip
 
-%x(git clone --depth 1 git@github.com:num42/template-app-android.git)
+%x(git clone --depth 1 git@github.com:num42/krebeki-app-android-app-android.git)
 
 puts "renaming to #{folder_name}"
-%x(mv template-app-android #{folder_name})
+%x(mv krebeki-app-android-app-android #{folder_name})
 
 Dir.chdir(folder_name) do
 
@@ -78,11 +78,11 @@ Dir.chdir(folder_name) do
 
   installRename()
 
-  replaceInFiles("de.number42.template.TemplateApplication", "de.number42.template.#{app_name}Application")
-  replaceInFileNames("TemplateApplication", "#{app_name}Application")
-  replaceInFiles("TemplateApplication", "#{app_name}Application")
-  replaceInFiles("template-app-android", "#{app_name}-app-android")
-  replaceInFiles("Template", "#{app_name}")
+  replaceInFiles("de.number42.template.krebeki-app-androidApplication", "de.number42.template.#{app_name}Application")
+  replaceInFileNames("krebeki-app-androidApplication", "#{app_name}Application")
+  replaceInFiles("krebeki-app-androidApplication", "#{app_name}Application")
+  replaceInFiles("krebeki-app-android-app-android", "#{app_name}-app-android")
+  replaceInFiles("krebeki-app-android", "#{app_name}")
 
   commitWithMessage("Modify App Name")
 

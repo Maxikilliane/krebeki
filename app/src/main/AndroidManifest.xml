@@ -5,7 +5,7 @@
 
 
   <application
-      android:name="de.number42.template.TemplateApplication"
+      android:name="de.number42.template.krebeki-app-androidApplication"
       android:allowBackup="false"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"

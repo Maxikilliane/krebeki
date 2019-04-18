@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import timber.log.LogcatTree
 import timber.log.Timber
 
-class TemplateApplication : Application() {
+class krebeki-app-androidApplication : Application() {
 
   lateinit var appComponent: AppComponent
 
