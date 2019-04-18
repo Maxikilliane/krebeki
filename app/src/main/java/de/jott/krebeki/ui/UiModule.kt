@@ -1,4 +1,4 @@
-package de.number42.template.ui
+package de.jott.krebeki.ui
 
 import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.Module

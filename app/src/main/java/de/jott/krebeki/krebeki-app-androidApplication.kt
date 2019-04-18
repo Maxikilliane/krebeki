@@ -1,4 +1,4 @@
-package de.number42.template
+package de.jott.krebeki
 
 import android.app.Activity
 import android.app.Application

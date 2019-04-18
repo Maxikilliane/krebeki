@@ -1,4 +1,4 @@
-package de.number42.template.data
+package de.jott.krebeki.data
 
 import dagger.Module
 

@@ -9,7 +9,7 @@ apply from: 'password.gradle'
 android {
   compileSdkVersion buildConfig.compileSdk
   defaultConfig {
-    applicationId "de.number42.template"
+    applicationId "de.jott.krebeki"
     minSdkVersion buildConfig.minSdk
     targetSdkVersion buildConfig.targetSdk
 

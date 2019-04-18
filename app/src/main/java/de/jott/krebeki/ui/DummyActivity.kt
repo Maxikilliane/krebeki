@@ -1,4 +1,4 @@
-package de.number42.template.ui
+package de.jott.krebeki.ui
 
 import androidx.appcompat.app.AppCompatActivity
 

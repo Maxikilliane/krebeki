@@ -1,10 +1,10 @@
-package de.number42.template
+package de.jott.krebeki
 
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
-import de.number42.template.data.DebugDataModule
-import de.number42.template.ui.UiModule
+import de.jott.krebeki.data.DebugDataModule
+import de.jott.krebeki.ui.UiModule
 
 import javax.inject.Singleton
 

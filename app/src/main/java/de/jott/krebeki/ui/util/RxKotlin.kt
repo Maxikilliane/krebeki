@@ -1,4 +1,4 @@
-package de.number42.template.ui.util
+package de.jott.krebeki.ui.util
 
 import io.reactivex.Observable
 

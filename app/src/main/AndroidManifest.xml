@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="de.number42.template">
+    package="de.jott.krebeki">
 
 
   <application
-      android:name="de.number42.template.krebeki-app-androidApplication"
+      android:name="de.jott.krebeki.krebeki-app-androidApplication"
       android:allowBackup="false"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"

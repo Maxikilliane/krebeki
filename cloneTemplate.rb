@@ -56,7 +56,7 @@ end
 # Gather information
 folder_name = (prompt "Folder name for checkout? ").strip
 app_name = (prompt "Name for the new App (replaces krebeki-app-android)? ").strip
-package_name = (prompt "New (full!) package name (replaces de.number42.template)? ").strip
+package_name = (prompt "New (full!) package name (replaces de.jott.krebeki)? ").strip
 
 %x(git clone --depth 1 git@github.com:num42/krebeki-app-android-app-android.git)
 
@@ -78,7 +78,7 @@ Dir.chdir(folder_name) do
 
   installRename()
 
-  replaceInFiles("de.number42.template.krebeki-app-androidApplication", "de.number42.template.#{app_name}Application")
+  replaceInFiles("de.jott.krebeki.krebeki-app-androidApplication", "de.jott.krebeki.#{app_name}Application")
   replaceInFileNames("krebeki-app-androidApplication", "#{app_name}Application")
   replaceInFiles("krebeki-app-androidApplication", "#{app_name}Application")
   replaceInFiles("krebeki-app-android-app-android", "#{app_name}-app-android")
@@ -86,9 +86,9 @@ Dir.chdir(folder_name) do
 
   commitWithMessage("Modify App Name")
 
-  replaceInFiles("de.number42.template", "#{package_name}")
+  replaceInFiles("de.jott.krebeki", "#{package_name}")
 
-  replaceInPath("/de/number42/template", "/#{package_name.gsub("\.", "/")}")
+  replaceInPath("/de.jott.krebeki", "/#{package_name.gsub("\.", "/")}")
 
   commitWithMessage("Rename Package Name")
 end
