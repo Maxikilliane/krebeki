@@ -3,7 +3,7 @@
 buildscript {
   ext.buildConfig = [
       'compileSdk': 28,
-      'minSdk': 21,
+      'minSdk': 23,
       'targetSdk': 28,
 
       'version': [
@@ -156,7 +156,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.4.0-rc03'
+    classpath 'com.android.tools.build:gradle:3.5.0-alpha08'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
     classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:${versions.kotlinSerialization}"
     classpath 'org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.37'

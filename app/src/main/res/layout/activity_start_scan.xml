@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/start_scan_title"
+      android:textSize="40sp"
+      android:textStyle="bold"
+      android:textColor="@android:color/white"
+      android:layout_centerInParent="true"
+      android:paddingBottom="50dp"
+      android:layout_above="@+id/start_scan_text"
+      />
+
+
+  <TextView
+      android:id="@+id/start_scan_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/start_scan_text"
+      android:textColor="@android:color/white"
+      android:textSize="20sp"
+      android:gravity="center"
+      android:paddingBottom="20dp"
+      android:layout_above="@+id/start_scan_button"
+      />
+
+  <Button
+      android:id="@+id/start_scan_button"
+      android:layout_width="match_parent"
+      android:layout_marginBottom="20dp"
+      android:layout_gravity="center_vertical"
+      android:layout_marginTop="15dp"
+      android:layout_marginStart="20dp"
+      android:textSize="16sp"
+      android:layout_marginEnd="20dp"
+      android:layout_height="60dp"
+      android:text="@string/start_scan_button"
+      android:layout_centerInParent="true"
+      android:background="@color/colorAccent"
+      />
+
+</RelativeLayout>

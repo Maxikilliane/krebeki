@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+  <com.google.android.material.appbar.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <include layout="@layout/toolbar"/>
+  </com.google.android.material.appbar.AppBarLayout>
+  <com.google.android.exoplayer2.ui.PlayerView
+      android:id="@+id/video"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="0.5"
+      android:background="@android:color/white"
+      />
+
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="0.5"
+      android:orientation="vertical">
+
+    <Button
+        android:id="@+id/question1"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="60dp"
+        android:text="Stehst du gerne hier rum?"
+        android:layout_centerInParent="true"
+        android:background="@color/colorAccent"
+        />
+
+    <Button
+        android:id="@+id/question2"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="60dp"
+        android:text="Für was bist du berühmt?"
+        android:layout_centerInParent="true"
+        android:background="@color/colorAccent"
+        />
+
+    <Button
+        android:id="@+id/question3"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="60dp"
+        android:text="Erzähl was von dir!"
+        android:layout_centerInParent="true"
+        android:background="@color/colorAccent"
+        />
+
+
+
+#
+
+  </LinearLayout>
+
+</LinearLayout>

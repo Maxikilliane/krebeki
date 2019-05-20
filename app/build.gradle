@@ -142,6 +142,10 @@ dependencies {
   testImplementation deps.spek.junitPlatformEngine
   testImplementation deps.truth
   testImplementation deps.rx.schedulerRule
+
+  implementation 'com.google.android.gms:play-services-vision:17.0.2'
+  implementation 'com.google.android.exoplayer:exoplayer:2.9.1'
+
 }
 
 kapt { arguments { arg("resourcePackageName", android.defaultConfig.applicationId) } }

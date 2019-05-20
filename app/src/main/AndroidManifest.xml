@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="de.jott.krebeki">
 
+  <uses-permission android:name="android.permission.CAMERA" />
+
 
   <application
-      android:name="de.jott.krebeki.krebeki-app-androidApplication"
+      android:name="de.jott.krebeki.KrebekiApplication"
       android:allowBackup="false"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
@@ -13,8 +15,9 @@
       android:supportsRtl="false"
       android:theme="@style/AppTheme">
 
-    <activity android:name=".ui.DummyActivity">
-
+    <activity android:name=".ui.scan.ScanStartActivity"
+      android:launchMode="singleTop"
+      android:screenOrientation="portrait">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
@@ -23,7 +26,19 @@
     </activity>
 
 
+    <activity
+        android:name=".ui.scan.ScannerActivity"
+        android:parentActivityName=".ui.scan.ScanStartActivity"
+        android:launchMode="singleTop"
+        android:screenOrientation="portrait">
+    </activity>
 
+    <activity
+        android:name=".ui.scan.ScanResultActivity"
+        android:parentActivityName=".ui.scan.ScannerActivity"
+        android:launchMode="singleTop"
+        android:screenOrientation="portrait">
+    </activity>
 
   </application>
 
